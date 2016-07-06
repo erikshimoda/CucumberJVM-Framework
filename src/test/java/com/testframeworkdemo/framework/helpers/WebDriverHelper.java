@@ -110,8 +110,9 @@ public class WebDriverHelper extends EventFiringWebDriver {
                 LOG.error(SELENIUM_REMOTE_URL + " Error " + e.getMessage());
             }
         }
-        SHARED_DRIVER.manage().window();
-        //.setSize(BROWSER_WINDOW_SIZE);
+        SHARED_DRIVER.manage().deleteAllCookies();
+        SHARED_DRIVER.manage().window().maximize();
+        //SHARED_DRIVER.manage().window().setSize(BROWSER_WINDOW_SIZE);
     }
 
     private static void startFireFoxDriver() {
@@ -125,8 +126,9 @@ public class WebDriverHelper extends EventFiringWebDriver {
                 LOG.error(SELENIUM_REMOTE_URL + " Error " + e.getMessage());
             }
         }
-        SHARED_DRIVER.manage().window();
-        //.setSize(BROWSER_WINDOW_SIZE);
+        SHARED_DRIVER.manage().deleteAllCookies();
+        SHARED_DRIVER.manage().window().maximize();
+        //SHARED_DRIVER.manage().window().setSize(BROWSER_WINDOW_SIZE);
     }
 
     private static void startPhantomJsDriver() {
@@ -140,8 +142,9 @@ public class WebDriverHelper extends EventFiringWebDriver {
                 LOG.error(SELENIUM_REMOTE_URL + " Error " + e.getMessage());
             }
         }
-        SHARED_DRIVER.manage().window();
-        //.setSize(BROWSER_WINDOW_SIZE);
+        SHARED_DRIVER.manage().deleteAllCookies();
+        SHARED_DRIVER.manage().window().maximize();
+        //SHARED_DRIVER.manage().window().setSize(BROWSER_WINDOW_SIZE);
     }
 
     private static void startSauceDriver() {
@@ -166,8 +169,9 @@ public class WebDriverHelper extends EventFiringWebDriver {
                 LOG.error(SELENIUM_REMOTE_URL + " Error " + e.getMessage());
             }
         }
-        SHARED_DRIVER.manage().window();
-        //.setSize(BROWSER_WINDOW_SIZE);
+        SHARED_DRIVER.manage().deleteAllCookies();
+        SHARED_DRIVER.manage().window().maximize();
+        //SHARED_DRIVER.manage().window().setSize(BROWSER_WINDOW_SIZE);
         return SHARED_DRIVER;
     }
 

@@ -29,9 +29,6 @@ public abstract class PageObject {
 //		this.wait = new WebDriverWait(webDriver, DRIVER_WAIT_TIME);		
 	}
 	
-    /**
-     * Change the focus of webdriver for the new Opened Page
-     **/
 	public static void switchToLandingPage() {
 		for (String landHandle : webDriver.getWindowHandles()) {
 			webDriver.switchTo().window(landHandle);
@@ -41,14 +38,14 @@ public abstract class PageObject {
     /**
      * Returns the current Url from page
      **/
-    public static String getCurrentUrl() {
+    public static String getUrlPaginaAtual() {
         return webDriver.getCurrentUrl();
     }
 
     /**
      * Returns the current page title from page
      */
-    public static String getCurrentPageTitle() {
+    public static String getTituloPaginaAtual() {
         return webDriver.getTitle();
     }
 
@@ -58,8 +55,8 @@ public abstract class PageObject {
      * @param title the expected title, which must be an exact match
      * @return true when the title matches, false otherwise
      */
-    public static boolean checkPageTitle(String title) {
-        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.titleIs(title));
+    public static boolean validarTituloDaPagina(String titulo) {
+        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.titleIs(titulo));
     }
 
     /**
@@ -69,8 +66,8 @@ public abstract class PageObject {
      * @param title the fragment of title expected
      * @return true when the title matches, false otherwise
      */
-    public boolean checkPageTitleContains(String title) {
-        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.titleContains(title));
+    public boolean validarTituloDaPaginaContem(String titulo) {
+        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.titleContains(titulo));
     }
 
     /**
@@ -79,7 +76,7 @@ public abstract class PageObject {
      * @param url the url that the page should be on
      * @return <code>true</code> when the URL is what it should be
      */
-    public boolean checkPageUrlToBe(String url) {
+    public boolean validarUrlPaginaAtual(String url) {
         return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.urlToBe(url));
     }
 
@@ -89,8 +86,8 @@ public abstract class PageObject {
      * @param fraction the fraction of the url that the page should be on
      * @return <code>true</code> when the URL contains the text
      */
-    public boolean checkPageUrlContains(String fraction) {
-        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.urlContains(fraction));
+    public boolean validarUrlPaginaAtualContem(String urlParcial) {
+        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.urlContains(urlParcial));
     }
 
     /**
@@ -100,7 +97,7 @@ public abstract class PageObject {
      * @return <code>true</code> if the URL matches the specified regular expression
      */
 
-    public boolean checkPageUrlMatches(String regex) {
+    public boolean validarUrlPaginaAtualIgual(String regex) {
         return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.urlMatches(regex));
     }
 
@@ -141,8 +138,8 @@ public abstract class PageObject {
      * @param text    to be present in the element
      * @return true once the element contains the given text
      */
-    public boolean textToBePresentInElement(WebElement element, String text) {
-        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.textToBePresentInElement(element, text));
+    public boolean aguardarTextoEstarPresenteNoElemento(WebElement elemento, String texto) {
+        return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.textToBePresentInElement(elemento, texto));
     }
 
 
@@ -154,7 +151,7 @@ public abstract class PageObject {
      * @param text to be present in the element found by the locator
      * @return true once the first element located by locator contains the given text
      */
-    public boolean textToBePresentInElementLocated(final By by, final String text) {
+    public boolean aguardarTextoEstarPresenteNoElementoPeloLocalizador(final By by, final String text) {
         return new WebDriverWait(webDriver, DRIVER_WAIT_TIME).until(ExpectedConditions.textToBePresentInElementLocated(by, text));
     }
 
