@@ -1,4 +1,6 @@
-cucumberjvm-selenium-pageObject
+VERSÃO BETA - EM CONSTRUÇÃO
+
+
 =====================
 
 Page Object Framework using cucumber jvm (java) and Selenium java.
@@ -30,6 +32,4 @@ mvn -Dbrowser=ie test
 
 ** caso não seja escolhido nenhum browser, será executado o chrome.
 
-
-VERSÃO BETA - AINDA EM CONSTRUÇÃO
 # CucumberJVM-Framework
