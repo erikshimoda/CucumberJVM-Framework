@@ -1,17 +1,39 @@
 package com.testframeworkdemo.step_definitions.web;
 
+import java.util.HashMap;
+import java.util.List;
+
+import com.testframeworkdemo.framework.helpers.DadosHelper;
 import com.testframeworkdemo.page_object.web.AbrirContaCorrentePage;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
 public class AbrirContaCorrenteSteps {
 	
     private AbrirContaCorrentePage abrirContaCorrentePage;
+    public List<HashMap<String,String>> datamap;
 
     public AbrirContaCorrenteSteps(AbrirContaCorrentePage abrirContaCorrentePage) {
         this.abrirContaCorrentePage = abrirContaCorrentePage;
+     	datamap = DadosHelper.dados(System.getProperty("user.dir")+"//src//test//resources//massaDeTestes/MassaDeTestes.xlsx","TestData");
+    }
+    
+    @Quando("^preencho o nome completo com a linha \"(.*?)\" da Massa de Testes$")
+    public void preencho_o_nome_completo_com_a_linha_da_Massa_de_Testes(String linha) {
+        int indice = Integer.parseInt(linha)-1;
+//        for(HashMap<String, String> h:datamap)
+//        {
+//            System.out.println(h.keySet());
+//            System.out.println(h.values());
+//        }
+		abrirContaCorrentePage.retornarInputNomeName().sendKeys(datamap.get(indice).get("Nome"));
+    }
+
+    @Quando("^preencho o nome da mae com a linha \"(.*?)\" da Massa de Testes$")
+    public void preencho_o_nome_da_mae_com_a_linha_da_Massa_de_Testes(String linha) {
+        int indice = Integer.parseInt(linha)-1;
+		abrirContaCorrentePage.retornarInputNomeMaeName().sendKeys(datamap.get(indice).get("NomeMae"));
     }
 
 	@Quando("^escolho a opcao Eu Trabalho$")
@@ -22,7 +44,7 @@ public class AbrirContaCorrenteSteps {
 	@Quando("^escolho a opcao Para Voce$")
 	public void escolho_a_opcao_para_voce() throws Throwable {
 		abrirContaCorrentePage.retornarOpcaoParaVoceId().click();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 	}
 
 	@Quando("^preencho o nome completo \"(.*?)\"$")

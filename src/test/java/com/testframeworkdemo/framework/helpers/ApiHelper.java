@@ -18,7 +18,7 @@ import com.testframeworkdemo.services.beans.PostsApiBean;
  * Every Api Step definition class should extend this class
  */
 
-public class ApiHelper {
+public abstract class ApiHelper {
     public static Gson gson;
 
 //    static {

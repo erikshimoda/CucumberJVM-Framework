@@ -25,7 +25,7 @@ public abstract class PageObject {
 	public static WebDriverWait wait;
 
 	public PageObject(WebDriver webDriver) {
-		PageObject.webDriver = WebDriverHelper.getSharedDriver();
+		this.webDriver = WebDriverHelper.getSharedDriver();
 //		this.wait = new WebDriverWait(webDriver, DRIVER_WAIT_TIME);		
 	}
 	

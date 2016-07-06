@@ -1,5 +1,4 @@
 #language: pt 
-#encoding: iso-8859-1
 
 @testeMobiles
 

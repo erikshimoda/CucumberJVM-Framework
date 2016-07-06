@@ -12,52 +12,41 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DadosHelper {
 
-	public static HashMap<String,String> storeValues = new HashMap();
+	public static HashMap<String, String> storeValues = new HashMap<String, String>();
 
-
-	public static List<HashMap<String,String>> data()
-	{
-
-
-		List<HashMap<String,String>> dados = new ArrayList<>();
-		try
-		{
-
-			FileInputStream fs = new FileInputStream(System.getProperty("user.dir")+"//src//test//resources//testData/MassaDeTestes.xlsx");
+	public static List<HashMap<String, String>> dados(String arquivo,
+			String planilhaNome) {
+		List<HashMap<String, String>> dados = new ArrayList<>();
+		try {
+			FileInputStream fs = new FileInputStream(arquivo);
 			XSSFWorkbook pastaTrabalho = new XSSFWorkbook(fs);
-			XSSFSheet planilha = pastaTrabalho.getSheet("TestData");
+			XSSFSheet planilha = pastaTrabalho.getSheet(planilhaNome);
 			Row cabecalho = planilha.getRow(0);
 
-			for(int i=1;i<planilha.getPhysicalNumberOfRows();i++)
-			{
+			for (int i = 1; i < planilha.getPhysicalNumberOfRows(); i++) {
 				Row linhaAtual = planilha.getRow(i);
-				HashMap<String,String> hashCorrente = new HashMap<String,String>();
-				for(int j=0;j<linhaAtual.getPhysicalNumberOfCells();j++)
-				{
-					Cell celularAtual = linhaAtual.getCell(j);
+				HashMap<String, String> hash = new HashMap<String, String>();
+				for (int j = 0; j < linhaAtual.getPhysicalNumberOfCells(); j++) {
+					Cell celulaAtual = linhaAtual.getCell(j);
 
-					switch (celularAtual.getCellType())
-					{
+					switch (celulaAtual.getCellType()) {
 					case Cell.CELL_TYPE_STRING:
-						System.out.print(celularAtual.getStringCellValue() + "\t");
-
-						hashCorrente.put(cabecalho.getCell(j).getStringCellValue(), celularAtual.getStringCellValue());
+						// System.out.print(celulaAtual.getStringCellValue() +
+						// "\t");
+						hash.put(cabecalho.getCell(j).getStringCellValue(),
+								celulaAtual.getStringCellValue());
 						break;
 					}
-
 				}
-				dados.add(hashCorrente);
+				dados.add(hash);
 			}
 
 			fs.close();
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return dados;
 
 	}
-
 }

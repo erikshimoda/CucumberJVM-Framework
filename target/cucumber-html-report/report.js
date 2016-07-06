@@ -44,7 +44,7 @@ formatter.match({
   "location": "PostsApiSteps.que_eu_realizo_um_request_para_a_api(String)"
 });
 formatter.result({
-  "duration": 376222982,
+  "duration": 340304516,
   "status": "passed"
 });
 formatter.scenario({
@@ -96,7 +96,7 @@ formatter.match({
   "location": "PostsApiSteps.eu_realizo_um_GET_request_com_o_caminho(String)"
 });
 formatter.result({
-  "duration": 4394257831,
+  "duration": 991510208,
   "status": "passed"
 });
 formatter.match({
@@ -109,14 +109,14 @@ formatter.match({
   "location": "PostsApiSteps.eu_recebo_codigo_como_resposta(int)"
 });
 formatter.result({
-  "duration": 40469537,
+  "duration": 40601584,
   "status": "passed"
 });
 formatter.match({
   "location": "PostsApiSteps.eu_recebo_a_resposta(PostsApiBean\u003e)"
 });
 formatter.result({
-  "duration": 13320541,
+  "duration": 16494644,
   "status": "passed"
 });
 });
