@@ -11,11 +11,10 @@ public class HomePage extends PageObject {
 		super(webDriver);
 	}
 	
-    private static By abraSuaContaLinkText = By.linkText("Abra sua conta");
+    private static By abraSuaContaClass = By.className("conta");
     
 	public static void abrirSuaConta() {
-		waitForExpectedElement(abraSuaContaLinkText).click();
-		
+		waitForExpectedElement(abraSuaContaClass).click();
 		switchToLandingPage();
 	}
 }

@@ -48,7 +48,6 @@ public class AbrirContaCorrentePage extends PageObject {
     	return waitForExpectedElement(inputNomeName);
     }
 
-    
     public WebElement retornarInputCPFId() {
     	return waitForExpectedElement(inputCPFId);
     }

@@ -73,7 +73,7 @@ public class AndroidDriverHelper extends EventFiringWebDriver {
     public void close() {
         if (Thread.currentThread() != CLOSE_THREAD) {
             throw new UnsupportedOperationException(
-                    "You shouldn't close this WebDriver. It's shared and will close when the JVM exits.");
+            		"VOCE NAO DEVE ENCERRAR O WEBDRIVER, POIS O MESMO E COMPARTILHADO! AGUARDE QUE SERA FECHADO AUTOMATICAMENTE!");
         }
         super.close();
     }

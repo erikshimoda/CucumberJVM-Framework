@@ -16,7 +16,12 @@ public class AbrirContaCorrenteSteps {
 
     public AbrirContaCorrenteSteps(AbrirContaCorrentePage abrirContaCorrentePage) {
         this.abrirContaCorrentePage = abrirContaCorrentePage;
-     	datamap = DadosHelper.dados(System.getProperty("user.dir")+"//src//test//resources//massaDeTestes/MassaDeTestes.xlsx","TestData");
+//        StringBuilder dir = new StringBuilder();
+//        dir.append(this.getClass().getClassLoader().getResourceAsStream(properties));
+        
+//     	this.getClass().getClassLoader().getResourceAsStream(properties);
+        datamap = DadosHelper.dados(System.getProperty("user.dir")+"//src//test//resources//massaDeTestes/MassaDeTestes.xlsx","TestData");
+     	
     }
     
     @Quando("^preencho o nome completo com a linha \"(.*?)\" da Massa de Testes$")

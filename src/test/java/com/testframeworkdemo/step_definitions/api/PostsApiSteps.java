@@ -10,8 +10,8 @@ import java.util.List;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
-import com.testframeworkdemo.services.PostsApi;
-import com.testframeworkdemo.services.beans.PostsApiBean;
+import com.testframeworkdemo.servicos.PostsApi;
+import com.testframeworkdemo.servicos.beans.PostsApiBean;
 
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;

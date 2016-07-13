@@ -8,38 +8,6 @@
 	<packaging>jar</packaging>
 	<name>Test Framework - CucumberJVM</name>
 
-	<profiles>
-		<!-- Development environment @ my local machine -->
-		<profile>
-			<id>dev</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<profile.path>/profiles/dev/config.properties</profile.path>
-				<testToRun>**/RunGUIWebTest.class</testToRun>
-			</properties>
-		</profile>
-
-		<!-- Single Test -->
-		<!-- <profile> -->
-		<!-- <id>single</id> -->
-		<!-- <properties> -->
-		<!-- <profile.path>/profiles/single/config.properties</profile.path> -->
-		<!-- <testToRun>**/RunGUIWebTest.class</testToRun> -->
-		<!-- </properties> -->
-		<!-- </profile> -->
-
-		<!-- Running tets on mobile -->
-		<!-- <profile> -->
-		<!-- <id>mobile</id> -->
-		<!-- <properties> -->
-		<!-- <profile.path>/profiles/mobile/config.properties</profile.path> -->
-		<!-- <testToRun>**/RunGUIMobileTest.class</testToRun> -->
-		<!-- </properties> -->
-		<!-- </profile> -->
-	</profiles>
-
 	<properties>
 		<cucumber.version>1.2.2</cucumber.version>
 		<selenium.version>2.49.0</selenium.version>
@@ -54,16 +22,61 @@
 		<appium-java-client>3.1.0</appium-java-client>
 		<common-db-utils>1.6</common-db-utils>
 		<maven-surefire-plugin>2.17</maven-surefire-plugin>
-		<mojo-exec-maven-plugin>1.2.1</mojo-exec-maven-plugin>
 		<maven-resource-plugin>2.7</maven-resource-plugin>
+		<maven-war-plugin>2.6</maven-war-plugin>
 		<maven-compiler-plugin>2.5.1</maven-compiler-plugin>
-		<maven-cucumber-reporting>0.0.8</maven-cucumber-reporting>
 		<testng>6.8.21</testng>
 		<utf-8>UTF-8</utf-8>
-		<joda-time>2.5</joda-time>
 		<java-version>1.7</java-version>
 		<jackson-core>2.6.3</jackson-core>
 	</properties>
+
+	<profiles>
+		<!-- Ambiente Desenvolvimento Local -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- <Configurações API -->
+				<aplicacao.url>http://10.40.222.200</aplicacao.url>
+				<aplicacao.porta>9080</aplicacao.porta>
+				<aplicacao.endpoint></aplicacao.endpoint>
+
+				<!-- Configurações WebDriver -->
+				<webdriver.root.dir>tools</webdriver.root.dir>
+				<webdriver.host>localhost</webdriver.host>
+				<webdriver.porta></webdriver.porta>
+				<plataforma>linux</plataforma>
+
+				<!-- Configurações Mobile WebDriver -->
+				<mobiledriver.host></mobiledriver.host>
+				<mobiledriver.porta></mobiledriver.porta>
+
+				<!-- Configurações Browser Capabilities -->
+				<browser>chrome</browser>
+				<browser.window.width></browser.window.width>
+				<browser.window.height></browser.window.height>
+				<browser.window.size></browser.window.size>
+				<browser.ie.versao>10</browser.ie.versao>
+
+				<!-- Configurações Mobile Capabilities -->
+				<mobile.automacao.nome></mobile.automacao.nome>
+				<mobile.plataforma.nome></mobile.plataforma.nome>
+				<mobile.app></mobile.app>
+				<mobile.app.dir></mobile.app.dir>
+				<mobile.app.package></mobile.app.package>
+				<mobile.app.activity></mobile.app.activity>
+				<mobile.device.nome></mobile.device.nome>
+
+				<!-- Configurações SauceLab Capabilities -->
+				<sauce.advisor>false</sauce.advisor>
+				<record.video>false</record.video>
+				<record.screenshots>false</record.screenshots>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
@@ -77,6 +90,7 @@
 					<target>${java-version}</target>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -106,32 +120,26 @@
 					</execution>
 				</executions>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.mojo</groupId> -->
-<!-- 				<artifactId>exec-maven-plugin</artifactId> -->
-<!-- 				<version>${mojo-exec-maven-plugin}</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<phase>test</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>java</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 				<configuration> -->
-<!-- 					<mainClass>ReportMerger</mainClass> -->
-<!-- 					<arguments> -->
-<!-- 						<argument>target/cucumber-report/</argument> -->
-<!-- 					</arguments> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>${maven-resource-plugin}</version>
 				<configuration>
-					<!-- specify UTF-8, ISO-8859-1 or any other file encoding -->
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/test/resources</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin}</version>
+				<configuration>
 					<encoding>${utf-8}</encoding>
 
 					<resources>
@@ -143,38 +151,15 @@
 
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>net.masterthought</groupId>
-				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>${maven-cucumber-reporting}</version>
-				<executions>
-					<execution>
-						<id>execution</id>
-						<phase>test</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<projectName>cucumbertests</projectName>
-							<outputDirectory>target/cucumber-report/cucumber-html-reports</outputDirectory>
-							<cucumberOutput>target/cucumber-report/cucumber.json</cucumberOutput>
-							<enableFlashCharts>false</enableFlashCharts>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-
 		</plugins>
 
-		<!-- Instructing the resources plugin to filter certain directories -->
 		<resources>
 			<resource>
 				<directory>src/test/resources</directory>
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+
 	</build>
 
 	<dependencies>
