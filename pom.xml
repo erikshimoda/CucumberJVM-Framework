@@ -103,9 +103,9 @@
 							<goal>test</goal>
 						</goals>
 						<configuration>
-							<threadCount>2</threadCount>
+							<threadCount>4</threadCount>
 							<perCoreThreadCount>true</perCoreThreadCount>
-							<forkCount>2</forkCount>
+							<forkCount>4</forkCount>
 							<reuseForks>false</reuseForks>
 							<argLine>-Duser.language=en</argLine>
 							<argLine>-Xmx1024m</argLine>
@@ -113,7 +113,7 @@
 							<argLine>-Dfile.encoding=UTF-8</argLine>
 							<useFile>false</useFile>
 							<includes>
-								<include>${testToRun}</include>
+								<include>**/*Test.class</include>
 							</includes>
 							<testFailureIgnore>true</testFailureIgnore>
 						</configuration>
@@ -135,22 +135,6 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${maven-war-plugin}</version>
-				<configuration>
-					<encoding>${utf-8}</encoding>
-
-					<resources>
-						<resource>
-							<directory>src/test/resources</directory>
-							<filtering>true</filtering>
-						</resource>
-					</resources>
-
-				</configuration>
-			</plugin>
 		</plugins>
 
 		<resources>
@@ -170,12 +154,19 @@
 			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>${cucumber.version}</version>
-			<scope>test</scope>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>info.cukes</groupId> -->
+		<!-- <artifactId>cucumber-testng</artifactId> -->
+		<!-- <version>${cucumber.version}</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- <exclusions> -->
+		<!-- <exclusion> -->
+		<!-- <groupId>junit</groupId> -->
+		<!-- <artifactId>junit</artifactId> -->
+		<!-- </exclusion> -->
+		<!-- </exclusions> -->
+		<!-- </dependency> -->
+
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>

@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.testframeworkdemo.framework.PageObject;
-import com.testframeworkdemo.framework.helpers.WebDriverHelper;
 
 public class AbrirContaCorrentePage extends PageObject {
 	
@@ -31,10 +30,6 @@ public class AbrirContaCorrentePage extends PageObject {
     private By frameRangeClass = By.className("range");
     
     private By sliderRendaId = By.id("Renda");
-    
-	public AbrirContaCorrentePage (WebDriverHelper webDriver) {
-		super(webDriver);
-	}
     
     public WebElement retornarOpcaoParaVoceId() {
     	return waitForExpectedElement(opcaoParaVoceId);

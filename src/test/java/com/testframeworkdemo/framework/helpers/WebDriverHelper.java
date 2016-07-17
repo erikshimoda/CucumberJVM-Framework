@@ -23,10 +23,13 @@ import org.slf4j.LoggerFactory;
 
 import com.testframeworkdemo.framework.utils.PropertiesLoader;
 
-public class WebDriverHelper extends EventFiringWebDriver {
+public class WebDriverHelper  {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(WebDriverHelper.class);
-	private static RemoteWebDriver SHARED_DRIVER = null;
+	private static EventFiringWebDriver SHARED_DRIVER = null;
+	private static EventFiringWebDriver efd;
+	public static WebDriver webDriver;
+	// private static WebDriver WEBDRIVER = null;
 	private static final Thread CLOSE_THREAD = new Thread() {
 
 		@Override
@@ -61,7 +64,7 @@ public class WebDriverHelper extends EventFiringWebDriver {
 		BROWSER_IE_VERSAO = PropertiesLoader.getValor("browser.ie.versao");
 		BROWSER_WINDOW_WIDTH = PropertiesLoader.getValor("browser.width");
 		BROWSER_WINDOW_HEIGHT = PropertiesLoader.getValor("browser.height");
-		
+
 		DRIVER_ROOT_DIR = PropertiesLoader.getValor("driver.root.dir");
 
 		SAUCE_ADVISOR = PropertiesLoader.getValor("sauce.advisor");
@@ -107,7 +110,7 @@ public class WebDriverHelper extends EventFiringWebDriver {
 	}
 
 	public WebDriverHelper() {
-		super(SHARED_DRIVER);
+		super();
 	}
 
 	// private static String getDriverPath() {
@@ -117,9 +120,13 @@ public class WebDriverHelper extends EventFiringWebDriver {
 
 	private static void startIEDriver() {
 		DesiredCapabilities capabilities = getInternetExploreDesiredCapabilities();
-		if (SELENIUM_HOST == null || SELENIUM_HOST.isEmpty())
-			SHARED_DRIVER = new InternetExplorerDriver(capabilities);
-		else {
+		if (SELENIUM_HOST == null || SELENIUM_HOST.isEmpty()) {
+			webDriver = new InternetExplorerDriver(capabilities);
+			efd = new EventFiringWebDriver(webDriver);
+			efd.register(new WebEventListenerHelper());
+			// SHARED_DRIVER = new InternetExplorerDriver(capabilities);
+			SHARED_DRIVER = efd;
+		} else {
 			try {
 				SHARED_DRIVER = getRemoteWebDriver(capabilities);
 			} catch (MalformedURLException e) {
@@ -132,9 +139,13 @@ public class WebDriverHelper extends EventFiringWebDriver {
 
 	private static void startFireFoxDriver() {
 		DesiredCapabilities capabilities = getFireFoxDesiredCapabilities();
-		if (SELENIUM_HOST == null || SELENIUM_HOST.isEmpty())
-			SHARED_DRIVER = new FirefoxDriver();
-		else {
+		if (SELENIUM_HOST == null || SELENIUM_HOST.isEmpty()) {
+			webDriver =  new FirefoxDriver();
+			efd = new EventFiringWebDriver(webDriver);
+			efd.register(new WebEventListenerHelper());
+			// SHARED_DRIVER = new FirefoxDriver();
+			SHARED_DRIVER = efd;
+		} else {
 			try {
 				SHARED_DRIVER = getRemoteWebDriver(capabilities);
 			} catch (MalformedURLException e) {
@@ -147,49 +158,55 @@ public class WebDriverHelper extends EventFiringWebDriver {
 
 	private static void startPhantomJsDriver() {
 		DesiredCapabilities capabilities = getPhantomJsCapabilities();
-		if (SELENIUM_HOST == null || SELENIUM_HOST.isEmpty())
-			SHARED_DRIVER = new PhantomJSDriver(capabilities);
-		else {
-			try {
-				SHARED_DRIVER = getRemoteWebDriver(capabilities);
-			} catch (MalformedURLException e) {
-				LOG.error(SELENIUM_REMOTE_URL + " Error " + e.getMessage());
-			}
-		}
+////		if (SELENIUM_HOST == null || SELENIUM_HOST.isEmpty())
+//			SHARED_DRIVER = new PhantomJSDriver(capabilities);
+//		else {
+//			try {
+//				SHARED_DRIVER = getRemoteWebDriver(capabilities);
+//			} catch (MalformedURLException e) {
+//				LOG.error(SELENIUM_REMOTE_URL + " Error " + e.getMessage());
+//			}
+//		}
 		configWindowSize(BROWSER_WINDOW_WIDTH, BROWSER_WINDOW_HEIGHT);
 	}
 
 	private static void startSauceDriver() {
 		DesiredCapabilities capabilities = getSauceCapabilities();
-		try {
-			SHARED_DRIVER = new RemoteWebDriver(
-					new URL(
-							"http://username-string:access-key-string@ondemand.saucelabs.com:80/wd/hub"),
-					capabilities);
-		} catch (MalformedURLException e) {
-			LOG.error(" Error Sauce Url " + e.getMessage());
-		}
+//		try {
+//			SHARED_DRIVER = new RemoteWebDriver(
+//					new URL(
+//							"http://username-string:access-key-string@ondemand.saucelabs.com:80/wd/hub"),
+//					capabilities);
+//		} catch (MalformedURLException e) {
+//			LOG.error(" Error Sauce Url " + e.getMessage());
+//		}
 	}
 
 	private static void startChromeDriver() {
 		DesiredCapabilities capabilities = getChromeDesiredCapabilities();
 
-		if (SELENIUM_HOST == null || SELENIUM_HOST.isEmpty())
-			SHARED_DRIVER = new ChromeDriver(
+		if (SELENIUM_HOST == null || SELENIUM_HOST.isEmpty()) {
+			webDriver =  new ChromeDriver(
 					ChromeDriverService.createDefaultService(), capabilities);
-		else {
+			efd = new EventFiringWebDriver(webDriver);
+			efd.register(new WebEventListenerHelper());
+//			SHARED_DRIVER = new ChromeDriver(
+//					ChromeDriverService.createDefaultService(), capabilities);
+			SHARED_DRIVER = efd;
+		} else {
 			try {
 				SHARED_DRIVER = getRemoteWebDriver(capabilities);
 			} catch (MalformedURLException e) {
-				LOG.error(SELENIUM_REMOTE_URL + " Error " + e.getMessage());
+				LOG.error(SELENIUM_REMOTE_URL, " Error ", e.getMessage());
 			}
 		}
 		SHARED_DRIVER.manage().deleteAllCookies();
 		configWindowSize(BROWSER_WINDOW_WIDTH, BROWSER_WINDOW_HEIGHT);
 	}
-	
-	private static void configWindowSize(String width, String height){
-		if (width != null && height != null && !width.isEmpty() && !height.isEmpty()) {
+
+	private static void configWindowSize(String width, String height) {
+		if (width != null && height != null && !width.isEmpty()
+				&& !height.isEmpty()) {
 			int x = Integer.parseInt(width);
 			int y = Integer.parseInt(height);
 			BROWSER_WINDOW_SIZE = new Dimension(x, y);
@@ -260,12 +277,18 @@ public class WebDriverHelper extends EventFiringWebDriver {
 		return capabilities;
 	}
 
-	private static RemoteWebDriver getRemoteWebDriver(
+	private static EventFiringWebDriver getRemoteWebDriver(
 			DesiredCapabilities capabilities) throws MalformedURLException {
 		SELENIUM_REMOTE_URL = "http://" + SELENIUM_HOST + ":" + SELENIUM_PORTA
 				+ "/wd/hub";
 		LOG.info(SELENIUM_REMOTE_URL + " Checking Selenium Remote URL");
-		return new RemoteWebDriver(new URL(SELENIUM_REMOTE_URL), (capabilities));
+		RemoteWebDriver rwd = new RemoteWebDriver(new URL(SELENIUM_REMOTE_URL),
+				(capabilities));
+		efd = new EventFiringWebDriver(rwd);
+		efd.register(new WebEventListenerHelper());
+		return efd;
+		// return new RemoteWebDriver(new URL(SELENIUM_REMOTE_URL),
+		// (capabilities));
 	}
 
 	public static WebDriver getSharedDriver() {
@@ -276,12 +299,11 @@ public class WebDriverHelper extends EventFiringWebDriver {
 		getSharedDriver().manage().window().setSize(dimension);
 	}
 
-	@Override
-	public void close() {
-		if (Thread.currentThread() != CLOSE_THREAD) {
-			throw new UnsupportedOperationException(
-					"VOCE NAO DEVE ENCERRAR O WEBDRIVER, POIS O MESMO E COMPARTILHADO! AGUARDE QUE SERA FECHADO AUTOMATICAMENTE!");
-		}
-		super.close();
-	}
+//	public void close() {
+//		if (Thread.currentThread() != CLOSE_THREAD) {
+//			throw new UnsupportedOperationException(
+//					"VOCE NAO DEVE ENCERRAR O WEBDRIVER, POIS O MESMO E COMPARTILHADO! AGUARDE QUE SERA FECHADO AUTOMATICAMENTE!");
+//		}
+//		super.close();
+//	}
 }
