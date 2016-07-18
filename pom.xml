@@ -113,12 +113,32 @@
 							<argLine>-Dfile.encoding=UTF-8</argLine>
 							<useFile>false</useFile>
 							<includes>
-								<include>**/*Test.class</include>
+								<include>**/RunGUIWebTest.class</include>
 							</includes>
 							<testFailureIgnore>true</testFailureIgnore>
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${mojo-exec-maven-plugin}</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>ReportMerger</mainClass>
+					<arguments>
+						<argument>target/cucumber-report/</argument>
+					</arguments>
+				</configuration>
 			</plugin>
 
 			<plugin>
@@ -133,6 +153,28 @@
 						</resource>
 					</webResources>
 				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>${maven-cucumber-reporting}</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>test</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>cucumbertests</projectName>
+							<outputDirectory>target/cucumber-report/cucumber-html-reports</outputDirectory>
+							<cucumberOutput>target/cucumber-report/cucumber.json</cucumberOutput>
+							<enableFlashCharts>false</enableFlashCharts>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>

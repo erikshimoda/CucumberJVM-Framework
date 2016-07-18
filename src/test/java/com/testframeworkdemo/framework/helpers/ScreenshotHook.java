@@ -31,7 +31,7 @@ public class ScreenshotHook extends PageObject {
             if (scenario.isFailed()) {
                 scenario.write(getWebDriver().getCurrentUrl());
                 byte[] screenShot = ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
-                scenario.embed(screenShot, "image/png");
+                scenario.embed(screenShot, "image/png");                
             }
 
         } catch (WebDriverException | ClassCastException wde) {

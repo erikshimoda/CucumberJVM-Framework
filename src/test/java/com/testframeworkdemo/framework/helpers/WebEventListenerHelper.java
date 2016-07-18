@@ -54,15 +54,6 @@ public class WebEventListenerHelper implements WebDriverEventListener {
 	public void onException(Throwable error, WebDriver driver) {
 		LOG.error("Ocorreu o erro: ", error);
 		System.err.println("Ocorreu o erro: " + error);
-		// onException(error, driver);
-//		WebDriver wd = new Augmenter().augment(driver);
-//		File arquivo = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);
-//		try {
-//			FileUtils
-//					.copyFile(arquivo, new File("src/test/resources/erro.png"));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 	}
 
 	public void beforeFindBy(By by, WebElement element, WebDriver driver) {

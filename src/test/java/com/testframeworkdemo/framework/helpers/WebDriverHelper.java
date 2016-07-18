@@ -287,8 +287,6 @@ public class WebDriverHelper  {
 		efd = new EventFiringWebDriver(rwd);
 		efd.register(new WebEventListenerHelper());
 		return efd;
-		// return new RemoteWebDriver(new URL(SELENIUM_REMOTE_URL),
-		// (capabilities));
 	}
 
 	public static WebDriver getSharedDriver() {
