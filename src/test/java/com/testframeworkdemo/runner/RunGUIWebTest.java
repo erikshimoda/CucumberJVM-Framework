@@ -12,8 +12,12 @@ import cucumber.api.junit.Cucumber;
 //}
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "classpath:features", plugin = { "pretty",
-		"html:target/cucumber-html-report", "json:cucumber.json" }, monochrome = true, tags = { "@testesFuncionais" }, glue = { "com.testframeworkdemo" })
+@CucumberOptions(
+		features = "classpath:features"
+//		, plugin = { "pretty", "html:target/cucumber-html-report", "json:cucumber.json" }
+		, monochrome = true
+		, tags = { "@testesFuncionais" }
+		, glue = { "com.testframeworkdemo" })
 public class RunGUIWebTest {
 
 }

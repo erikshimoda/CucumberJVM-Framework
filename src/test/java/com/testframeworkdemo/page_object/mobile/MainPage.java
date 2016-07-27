@@ -36,8 +36,4 @@ public class MainPage extends AndroidObject {
 	public void clicoNoVoltar() {
 		androidDriver.navigate().back();
 	}
-
-
-
-	
 }

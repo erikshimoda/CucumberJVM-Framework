@@ -13,15 +13,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.testframeworkdemo.framework.utils.PropertiesLoader;
 
 public class WebDriverHelper  {
 	private static final Logger LOG = LoggerFactory
@@ -55,9 +52,13 @@ public class WebDriverHelper  {
 	static {
 		// PropertiesLoader.PropertiesLoader("ambiente.properties");
 		// PropertiesLoader.loadRunConfigProperties("environment.properties");
-		PropertiesLoader.loadRunConfigProps();
+        PropertiesLoader.loadRunConfigProps("/environment.properties");
 
-		SELENIUM_HOST = PropertiesLoader.getValor("webdriver.host");
+//		PropertiesLoader.loadRunConfigProps();
+
+//		SELENIUM_HOST = PropertiesLoader.getValor("webdriver.host");
+		
+        SELENIUM_HOST = PropertiesLoader.getValor("webdriver.host");
 		SELENIUM_PORTA = PropertiesLoader.getValor("webdriver.porta");
 		PLATAFORMA = PropertiesLoader.getValor("plataforma");
 		BROWSER = PropertiesLoader.getValor("browser");
