@@ -3,10 +3,10 @@ package com.testframeworkcucumberjvm.mobile.screen_object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.testframeworkcucumberjvm.framework.AndroidObject;
+import com.testframeworkcucumberjvm.framework.AndroidScreenObject;
 import com.testframeworkcucumberjvm.framework.helpers.AndroidDriverHelper;
 
-public class RankingPage extends AndroidObject {
+public class RankingPage extends AndroidScreenObject {
 
 	private By labelNomeId = By.id("rownome");
 	private By labelIdadeId = By.id("rowidade");

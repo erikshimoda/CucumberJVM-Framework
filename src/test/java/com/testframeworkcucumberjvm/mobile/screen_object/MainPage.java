@@ -3,10 +3,10 @@ package com.testframeworkcucumberjvm.mobile.screen_object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.testframeworkcucumberjvm.framework.AndroidObject;
+import com.testframeworkcucumberjvm.framework.AndroidScreenObject;
 import com.testframeworkcucumberjvm.framework.helpers.AndroidDriverHelper;
 
-public class MainPage extends AndroidObject {
+public class MainPage extends AndroidScreenObject {
 
 	private By opcaoInformacoesGeraisId = By.id("btninfo");
 	private By opcaoIniciarAvalicaoId = By.id("btniniciar");

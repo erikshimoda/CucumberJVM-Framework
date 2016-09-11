@@ -18,15 +18,15 @@ import org.slf4j.LoggerFactory;
 
 import com.testframeworkcucumberjvm.framework.helpers.AndroidDriverHelper;
 
-public abstract class AndroidObject {
+public abstract class AndroidScreenObject {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AndroidObject.class);
+	private static final Logger LOG = LoggerFactory.getLogger(AndroidScreenObject.class);
 
 	private static final long DRIVER_WAIT_TIME = 30;
 	public static AppiumDriver<WebElement> androidDriver;
 
-	public AndroidObject(AndroidDriverHelper androidDriver) {
-		AndroidObject.androidDriver = AndroidDriverHelper.getSharedAndroidDriver();
+	public AndroidScreenObject(AndroidDriverHelper androidDriver) {
+		AndroidScreenObject.androidDriver = AndroidDriverHelper.getSharedAndroidDriver();
 	}
 
 	public void swipe(int startx, int starty, int endx, int endy, int duration) {
