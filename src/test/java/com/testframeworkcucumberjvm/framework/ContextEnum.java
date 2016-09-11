@@ -1,11 +1,17 @@
 package com.testframeworkcucumberjvm.framework;
 
 public enum ContextEnum {
-	NATIVEAPP,
-    WEBVIEW;
+	NATIVEAPP(1),
+    WEBVIEW(2);
+	
+	private final int context;
 
+	ContextEnum(int contextOption){
+		context = contextOption;
+	}
+	
 	public int getContext() {
-		// TODO Auto-generated method stub
-		return 0;
+		return context;
+
 	}
 }
