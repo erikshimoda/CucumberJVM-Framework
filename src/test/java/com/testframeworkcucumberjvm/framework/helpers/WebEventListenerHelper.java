@@ -1,4 +1,4 @@
-package com.testframeworkdemo.framework.helpers;
+package com.testframeworkcucumberjvm.framework.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

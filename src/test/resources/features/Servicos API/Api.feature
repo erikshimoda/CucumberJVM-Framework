@@ -1,7 +1,7 @@
 #language: pt 
 #encoding: iso-8859-1
 
-@servicos
+@Services
 
 Funcionalidade: Acessar uma API e realizar uma requisição
 

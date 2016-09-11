@@ -1,7 +1,7 @@
-package com.testframeworkdemo.step_definitions.mobile;
+package com.testframeworkcucumberjvm.mobile.step_definitions;
 
-import com.testframeworkdemo.framework.AndroidObject;
-import com.testframeworkdemo.framework.helpers.AndroidDriverHelper;
+import com.testframeworkcucumberjvm.framework.AndroidObject;
+import com.testframeworkcucumberjvm.framework.helpers.AndroidDriverHelper;
 
 import cucumber.api.java.pt.Dado;
 

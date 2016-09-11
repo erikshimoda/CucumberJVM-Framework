@@ -1,4 +1,4 @@
-package com.testframeworkdemo.framework.utils;
+package com.testframeworkcucumberjvm.framework.utils;
 
 import java.util.InputMismatchException;
 

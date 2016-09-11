@@ -1,10 +1,10 @@
-package com.testframeworkdemo.step_definitions.web;
+package com.testframeworkcucumberjvm.web.step_definitions;
 
 import java.util.HashMap;
 import java.util.List;
 
-import com.testframeworkdemo.framework.helpers.DadosHelper;
-import com.testframeworkdemo.page_object.web.AbrirContaCorrentePage;
+import com.testframeworkcucumberjvm.framework.helpers.DadosHelper;
+import com.testframeworkcucumberjvm.web.page_object.AbrirContaCorrentePage;
 
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;

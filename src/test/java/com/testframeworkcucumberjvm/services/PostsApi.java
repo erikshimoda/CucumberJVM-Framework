@@ -1,10 +1,10 @@
-package com.testframeworkdemo.servicos;
+package com.testframeworkcucumberjvm.services;
 
 import java.util.List;
 
 import com.jayway.restassured.response.Response;
-import com.testframeworkdemo.framework.helpers.ApiHelper;
-import com.testframeworkdemo.servicos.beans.PostsApiBean;
+import com.testframeworkcucumberjvm.framework.helpers.ApiHelper;
+import com.testframeworkcucumberjvm.services.beans.PostsApiBean;
 
 public class PostsApi extends ApiHelper {
 

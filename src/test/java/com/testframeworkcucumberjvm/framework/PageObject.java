@@ -1,4 +1,4 @@
-package com.testframeworkdemo.framework;
+package com.testframeworkcucumberjvm.framework;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.testframeworkdemo.framework.helpers.WebDriverHelper;
+import com.testframeworkcucumberjvm.framework.helpers.WebDriverHelper;
 
 public abstract class PageObject {
 

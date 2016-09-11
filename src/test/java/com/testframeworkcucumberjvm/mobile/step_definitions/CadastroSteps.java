@@ -1,6 +1,6 @@
-package com.testframeworkdemo.step_definitions.mobile;
+package com.testframeworkcucumberjvm.mobile.step_definitions;
 
-import com.testframeworkdemo.page_object.mobile.CadastroPage;
+import com.testframeworkcucumberjvm.mobile.screen_object.CadastroPage;
 
 import cucumber.api.java.pt.Quando;
 

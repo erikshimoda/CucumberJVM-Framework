@@ -1,4 +1,4 @@
-package com.testframeworkdemo.framework.helpers;
+package com.testframeworkcucumberjvm.framework.helpers;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriverException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.testframeworkdemo.framework.PageObject;
+import com.testframeworkcucumberjvm.framework.PageObject;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;

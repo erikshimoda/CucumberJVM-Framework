@@ -1,4 +1,4 @@
-package com.testframeworkdemo.step_definitions.api;
+package com.testframeworkcucumberjvm.api.step_definitions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import gherkin.deps.com.google.gson.stream.JsonReader;
@@ -10,8 +10,8 @@ import java.util.List;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
-import com.testframeworkdemo.servicos.PostsApi;
-import com.testframeworkdemo.servicos.beans.PostsApiBean;
+import com.testframeworkcucumberjvm.services.PostsApi;
+import com.testframeworkcucumberjvm.services.beans.PostsApiBean;
 
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;

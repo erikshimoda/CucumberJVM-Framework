@@ -1,4 +1,4 @@
-package com.testframeworkdemo.servicos.beans;
+package com.testframeworkcucumberjvm.services.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

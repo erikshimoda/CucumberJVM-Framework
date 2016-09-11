@@ -1,8 +1,8 @@
-package com.testframeworkdemo.step_definitions.mobile;
+package com.testframeworkcucumberjvm.mobile.step_definitions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.testframeworkdemo.page_object.mobile.InformacoesGeraisPage;
+import com.testframeworkcucumberjvm.mobile.screen_object.InformacoesGeraisPage;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.pt.Então;

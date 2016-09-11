@@ -1,4 +1,4 @@
-package com.testframeworkdemo.framework.helpers;
+package com.testframeworkcucumberjvm.framework.helpers;
 
 
 import static com.jayway.restassured.RestAssured.given;
@@ -12,7 +12,7 @@ import java.util.List;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
-import com.testframeworkdemo.servicos.beans.PostsApiBean;
+import com.testframeworkcucumberjvm.services.beans.PostsApiBean;
 
 /**
  * Every Api Step definition class should extend this class

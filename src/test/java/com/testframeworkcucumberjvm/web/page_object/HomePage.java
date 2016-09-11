@@ -1,8 +1,8 @@
-package com.testframeworkdemo.page_object.web;
+package com.testframeworkcucumberjvm.web.page_object;
 
 import org.openqa.selenium.By;
 
-import com.testframeworkdemo.framework.PageObject;
+import com.testframeworkcucumberjvm.framework.PageObject;
 
 public class HomePage extends PageObject {
     

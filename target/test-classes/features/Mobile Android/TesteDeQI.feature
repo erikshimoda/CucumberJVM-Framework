@@ -1,6 +1,6 @@
 #language: pt 
 
-@testeMobiless
+@Mobile
 Funcionalidade: App que avalia o QI de uma pessoas
 Contexto:
 	Dado que eu abro o app Teste de QI 

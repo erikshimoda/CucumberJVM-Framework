@@ -1,7 +1,7 @@
 #language: pt
 #encoding: UTF-8
 
-@testesFuncionais
+@Web
 
 Funcionalidade: No portal do Santander, preencher os dados para abrir uma nova conta corrente
 

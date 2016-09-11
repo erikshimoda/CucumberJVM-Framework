@@ -1,10 +1,10 @@
-package com.testframeworkdemo.step_definitions.web;
+package com.testframeworkcucumberjvm.web.step_definitions;
 
 import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
 
-import com.testframeworkdemo.framework.helpers.WebDriverHelper;
+import com.testframeworkcucumberjvm.framework.helpers.WebDriverHelper;
 
 import cucumber.api.java.pt.Dado;
 

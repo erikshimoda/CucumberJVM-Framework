@@ -1,6 +1,6 @@
-package com.testframeworkdemo.step_definitions.web;
+package com.testframeworkcucumberjvm.web.step_definitions;
 
-import com.testframeworkdemo.page_object.web.HomePage;
+import com.testframeworkcucumberjvm.web.page_object.HomePage;
 
 import cucumber.api.java.pt.Quando;
 

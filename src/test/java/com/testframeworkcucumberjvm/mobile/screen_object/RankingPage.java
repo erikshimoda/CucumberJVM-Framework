@@ -1,10 +1,10 @@
-package com.testframeworkdemo.page_object.mobile;
+package com.testframeworkcucumberjvm.mobile.screen_object;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.testframeworkdemo.framework.AndroidObject;
-import com.testframeworkdemo.framework.helpers.AndroidDriverHelper;
+import com.testframeworkcucumberjvm.framework.AndroidObject;
+import com.testframeworkcucumberjvm.framework.helpers.AndroidDriverHelper;
 
 public class RankingPage extends AndroidObject {
 

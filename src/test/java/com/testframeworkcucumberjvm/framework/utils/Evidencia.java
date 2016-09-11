@@ -1,4 +1,4 @@
-package com.testframeworkdemo.framework.utils;
+package com.testframeworkcucumberjvm.framework.utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.Augmenter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.testframeworkdemo.framework.helpers.WebDriverHelper;
+import com.testframeworkcucumberjvm.framework.helpers.WebDriverHelper;
 
 public class Evidencia  {
 	
