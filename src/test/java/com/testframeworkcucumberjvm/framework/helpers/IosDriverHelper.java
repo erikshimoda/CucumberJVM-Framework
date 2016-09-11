@@ -15,8 +15,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-public class IOSDriverHelper extends EventFiringWebDriver {
-	private static final Logger LOG = LoggerFactory.getLogger(IOSDriverHelper.class);
+public class IosDriverHelper extends EventFiringWebDriver {
+	private static final Logger LOG = LoggerFactory.getLogger(IosDriverHelper.class);
 
 	private static String APPIUM_HOST;
 	private static String APPIUM_PORT;
@@ -58,7 +58,7 @@ public class IOSDriverHelper extends EventFiringWebDriver {
 		Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
 	}
 
-	public IOSDriverHelper() {
+	public IosDriverHelper() {
 		super(SHARED_IOS_DRIVER);
 	}
 

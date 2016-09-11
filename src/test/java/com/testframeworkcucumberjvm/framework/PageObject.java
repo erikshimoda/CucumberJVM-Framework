@@ -48,14 +48,14 @@ public abstract class PageObject {
     /**
      * Returns the current Url from page
      **/
-    public String getUrlPaginaAtual() {
+    public String getUrlCurrentPage() {
         return webDriver.getCurrentUrl();
     }
 
     /**
      * Returns the current page title from page
      */
-    public String getTituloPaginaAtual() {
+    public String getTitleCurrentPage() {
         return webDriver.getTitle();
     }
 
@@ -65,7 +65,7 @@ public abstract class PageObject {
      * @param title the expected title, which must be an exact match
      * @return true when the title matches, false otherwise
      */
-    public boolean validarTituloDaPagina(String titulo) {
+    public boolean checkPageTitle(String titulo) {
         return wait.until(ExpectedConditions.titleIs(titulo));
     }
 
@@ -76,7 +76,7 @@ public abstract class PageObject {
      * @param title the fragment of title expected
      * @return true when the title matches, false otherwise
      */
-    public boolean validarTituloDaPaginaContem(String titulo) {
+    public boolean checkPageTitleContains(String titulo) {
         return wait.until(ExpectedConditions.titleContains(titulo));
     }
 
@@ -86,7 +86,7 @@ public abstract class PageObject {
      * @param url the url that the page should be on
      * @return <code>true</code> when the URL is what it should be
      */
-    public boolean validarUrlPaginaAtual(String url) {
+    public boolean checkUrlCurrentPage(String url) {
         return wait.until(ExpectedConditions.urlToBe(url));
     }
 
@@ -96,7 +96,7 @@ public abstract class PageObject {
      * @param fraction the fraction of the url that the page should be on
      * @return <code>true</code> when the URL contains the text
      */
-    public boolean validarUrlPaginaAtualContem(String urlParcial) {
+    public boolean checkUrlCurrentPageContains(String urlParcial) {
         return wait.until(ExpectedConditions.urlContains(urlParcial));
     }
 
@@ -107,7 +107,7 @@ public abstract class PageObject {
      * @return <code>true</code> if the URL matches the specified regular expression
      */
 
-    public boolean validarUrlPaginaAtualIgual(String regex) {
+    public boolean checkUrlCurrentPageContainsByRegexp(String regex) {
         return wait.until(ExpectedConditions.urlMatches(regex));
     }
 
@@ -146,7 +146,7 @@ public abstract class PageObject {
      * @param text    to be present in the element
      * @return true once the element contains the given text
      */
-    public boolean aguardarTextoEstarPresenteNoElemento(WebElement elemento, String texto) {
+    public boolean waitTextBePresent(WebElement elemento, String texto) {
         return wait.until(ExpectedConditions.textToBePresentInElement(elemento, texto));
     }
 
@@ -159,7 +159,7 @@ public abstract class PageObject {
      * @param text to be present in the element found by the locator
      * @return true once the first element located by locator contains the given text
      */
-    public boolean aguardarTextoEstarPresenteNoElementoPeloLocalizador(final By by, final String text) {
+    public boolean waitTextBePresent(final By by, final String text) {
         return wait.until(ExpectedConditions.textToBePresentInElementLocated(by, text));
     }
 
@@ -172,7 +172,7 @@ public abstract class PageObject {
      * @param text    to be present in the element's value attribute
      * @return true once the element's value attribute contains the given text
      */
-    public boolean textToBePresentInElementValue(final WebElement element, final String text) {
+    public boolean waitTextToBePresentInElement(final WebElement element, final String text) {
         return wait.until(ExpectedConditions.textToBePresentInElementValue(element, text));
     }
 
@@ -186,7 +186,7 @@ public abstract class PageObject {
      * @return true once the value attribute of the first element located by locator contains
      * the given text
      */
-    public boolean textToBePresentInElementValue(final By by, final String text) {
+    public boolean waitTextToBePresentInElement(final By by, final String text) {
         return wait.until(ExpectedConditions.textToBePresentInElementValue(by, text));
     }
 

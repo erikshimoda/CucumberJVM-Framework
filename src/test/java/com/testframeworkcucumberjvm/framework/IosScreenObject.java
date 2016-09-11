@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.testframeworkcucumberjvm.framework.helpers.AndroidDriverHelper;
-import com.testframeworkcucumberjvm.framework.helpers.IOSDriverHelper;
+import com.testframeworkcucumberjvm.framework.helpers.IosDriverHelper;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -26,8 +26,8 @@ public abstract class IosScreenObject {
 	private static final long DRIVER_WAIT_TIME = 30;
 	public static AppiumDriver<WebElement> iosDriver;
 
-	public IosScreenObject(AndroidDriverHelper androidDriver) {
-		IosScreenObject.iosDriver = IOSDriverHelper.getSharedIOSDriver();
+	public IosScreenObject(IosDriverHelper iosDriver) {
+		IosScreenObject.iosDriver = IosDriverHelper.getSharedIOSDriver();
 	}
 
 	private static void changeToNativeContext() {
